@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>東京設計｜東京の中古・リノベーションマンション購入</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <div class="logo">東京設計<span>.</span></div>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <a href="#contact" class="header-cta">無料相談する</a>
+  </div>
+</header>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-sub">東京設計 — 中古・リノベーションマンション専門</p>
+    <h1 class="hero-title">
+      東京で、<em>理想の住まい</em>に出会おう。<br>
+      中古リノベ専門エージェントが<br>あなたにぴったりの物件を提案。
+    </h1>
+    </p>
+    <a href="#contact" class="hero-btn">無料で物件を提案してもらう</a>
+  </div>
+</section>
+
+<!-- ══════════════ LISTINGS ══════════════ -->
+<section class="section listings" id="listings">
+  <div class="section-inner">
+    <h2 class="section-title">中古・リノベーション物件一覧</h2>
+
+
+    <div class="property-grid" id="propertyGrid"></div>
+
+    <p class="listings-note">
+      ※1 2025年における、東京都23区、首都圏都市部における、35平米・2500万円以上の物件のご紹介可能な平均総数です。<br>
+      ※2 過去にお取り扱いのある物件情報を掲載しています。すでに販売済の物件のため、プライバシーに配慮し、写真は同等のイメージ写真を掲載しています。
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════ PROCESS ══════════════ -->
+<section class="section" id="process">
+  <div class="section-inner">
+    <h2 class="section-title">お申し込み後の流れ</h2>
+    <p class="section-sub">すべてオンラインで完結。お気軽にご相談ください。</p>
+
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-num">1</div>
+        <span class="process-time">約10分｜電話</span>
+        <div class="process-title">日程調整・ヒアリング</div>
+        <p class="process-desc">お電話にてご希望の住まいについてお伺いします。遠慮なくご希望をお伝えください。</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">2</div>
+        <span class="process-time">約1時間｜オンライン</span>
+        <div class="process-title">厳選物件をご紹介</div>
+        <p class="process-desc">カウカモエージェントが厳選した物件をまとめて紹介。その場でご希望の条件を整理し、追加で検索・紹介することも可能です。</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">3</div>
+        <span class="process-time">ご要望に応じて</span>
+        <div class="process-title">リノベーションプランのご提案</div>
+        <p class="process-desc">物件探しと一緒にリノベーションプランもご提案。「この間取り、変えられる？」などの希望に合わせて理想の住まいを実現します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FORM ══════════════ -->
+<section class="section form-section" id="contact">
+  <div class="section-inner">
+    <div class="form-box">
+      <h2 class="section-title" style="margin-bottom:6px;">無料相談受付中</h2>
+      <p class="section-sub" style="margin-bottom:24px;">
+        中古リノベ専門のカウカモがあなたにぴったりの物件をオンラインでご提案
+      </p>
+
+      <form onsubmit="handleSubmit(event)">
+        <label class="form-label">
+          お名前（ひらがな）<span class="req">必須</span>
+        </label>
+        <input class="form-input" type="text" placeholder="例）やまだ たろう" required />
+
+        <label class="form-label">
+          メールアドレス<span class="req">必須</span>
+        </label>
+        <input class="form-input" type="email" placeholder="例）example@email.com" required />
+
+        <label class="form-label">
+          電話番号<span class="req">必須</span>
+        </label>
+        <input class="form-input" type="tel" placeholder="例）090-1234-5678" required />
+
+        <button type="submit" class="form-submit">
+          物件を提案してもらう <span class="form-free">無料</span>
+        </button>
+      </form>
+
+      <p class="form-note">
+        <a href="#">プライバシーポリシー</a>をご確認の上、同意いただける方は送信ください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-logo">東京設計.</div>
+  <div>
+    <a href="#">利用規約</a>
+    <a href="#">プライバシーポリシー</a>
+  </div>
+  <p style="margin-top:12px;">© TOKYO DESIGN Inc.</p>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('お申し込みありがとうございます！\n担当エージェントより順次ご連絡いたします。');
+    e.target.reset();
+  }
+
+  // ── Load properties from localStorage (synced with admin page) ──
+  const STORE_KEY = 'tokyoSekkei_properties';
+  const DEFAULT_PROPS = [
+    { id:1, station:'神泉駅',     area:69, type:'1LDK', price:7180, status:'sale', img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80' },
+    { id:2, station:'中目黒駅',   area:79, type:'2LDK', price:6480, status:'sale', img:'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80' },
+    { id:3, station:'護国寺駅',   area:90, type:'3LDK', price:7780, status:'sale', img:'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600&q=80' },
+    { id:4, station:'西馬込駅',   area:61, type:'3LDK', price:4690, status:'sale', img:'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&q=80' },
+    { id:5, station:'三軒茶屋駅', area:57, type:'2LDK', price:4790, status:'sold', img:'https://images.unsplash.com/photo-1556909114-6f4f8c0528a9?w=600&q=80' },
+    { id:6, station:'溝の口駅',   area:62, type:'2LDK', price:3980, status:'sale', img:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80' },
+  ];
+
+  function renderProperties() {
+    const raw = localStorage.getItem(STORE_KEY);
+    const list = (raw ? JSON.parse(raw) : DEFAULT_PROPS).filter(p => p.status === 'sale');
+    const grid = document.getElementById('propertyGrid');
+    if (!list.length) {
+      grid.innerHTML = '<p style="text-align:center;color:#aaa;padding:40px;grid-column:1/-1;">現在販売中の物件はありません</p>';
+      return;
+    }
+    grid.innerHTML = list.map(p => `
+      <a class="property-card" href="property.html?id=${p.id}" style="text-decoration:none;color:inherit;display:block;">
+        <div class="property-img">
+          <img src="${p.img || 'https://via.placeholder.com/600x400?text=No+Image'}" alt="${p.station}物件"
+               onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'" />
+        </div>
+        <div class="property-info">
+          <div class="property-meta">
+            <span class="station">${p.station}</span>&nbsp;&nbsp;${p.area}㎡&nbsp;&nbsp;${p.type}
+            ${p.floor ? `&nbsp;&nbsp;${p.floor}F` : ''}
+            ${p.direction ? `&nbsp;&nbsp;${p.direction}向き` : ''}
+          </div>
+          <div class="property-price">
+            ${Number(p.price).toLocaleString()}<span class="unit">万円</span>
+          </div>
+          ${p.manage ? `<div style="font-size:12px;color:#999;margin-top:4px;">管理費 ${Number(p.manage).toLocaleString()}円／月</div>` : ''}
+        </div>
+        <div style="padding:0 20px 14px;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:12px;color:#aaa;">${p.age ? `築${p.age}年` : ''}${p.structure ? '　' + p.structure : ''}</span>
+          <span style="font-size:12px;color:#1ab3c8;font-weight:700;">詳細を見る →</span>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  renderProperties();
+</script>
+
+</body>
+</html>
